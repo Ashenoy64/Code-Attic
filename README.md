@@ -1,2 +1,2 @@
 # Code-Attic
-Just a Collection of Code
+Some collection of code which may or may not work
