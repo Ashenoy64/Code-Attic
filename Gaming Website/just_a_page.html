@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genshin</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background-color: #2C3639;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #3F4E4F;
+            margin: -10px;
+        }
+
+        ul li {
+            float: left;
+        }
+
+        ul li:hover {
+            background-color: #111;
+        }
+
+        li a {
+            display: block;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: white;
+            margin-top: -15px;
+        }
+
+        .main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas:
+                "im dev"
+                "im dev"
+                "re dev"
+                "re dec";
+            padding: 10px;
+            margin: 10px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .image {
+            grid-area: "im";
+        }
+
+        .descr {
+            text-align: center;
+            grid-area: "dev";
+
+        }
+
+        .requirements {
+            grid-area: "re";
+        }
+
+        .container {
+            display: block;
+            padding: 10px;
+            margin: auto;
+            margin-top: 5px;
+            overflow: hidden;
+            border-radius: 3px;
+            width: 50%;
+        }
+
+        #get {
+            background-color: rgb(167, 132, 199);
+        }
+
+        #wish,
+        #add {
+            background-color: grey;
+        }
+
+        table {
+            margin-top: 5px;;
+            border-collapse: collapse;
+            background-color:#3F4E4F ;
+            color:whitesmoke;
+        }
+
+        tr {
+            border-bottom: 1px solid black;
+        }
+        .he{
+            text-align:left;
+        }
+        .des{
+            text-align:right;
+        }
+        .showdesc{
+            grid-area:"dec";
+            display: block;
+            padding: 10px;
+            margin: auto;
+            margin-top: 5px;
+            overflow-y: scroll;
+            border-radius: 3px;
+            background-color:rgb(23, 21, 21);
+            width: 70%;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="#"><a>Amazing Store</a></li>
+        <li><a href="#"><a>Store</a></li>
+        <li><a href="#"><a>FAQ</a></li>
+        <li><a href="#"><a>Help</a></li>
+    </ul>
+
+    <div class="main">
+
+        <div class="image">
+            <img src="genshin.jpeg">
+        </div>
+
+        <div class="descr">
+            <h2 class="decription" style="color:rgb(226, 223, 223)">GENSHIN IMPACT</h2>
+            <br>
+            <p class="price"><span style="color:orangered;">Price:</span> $30.00</p>
+            <p class="price"><b style="color:yellowgreen;">On Sale:</b> $20.00</p>
+            <div class="container" id="get">GET</div>
+            <div class="container" id="add">Add To Cart</div>
+            <div class="container" id="wish">Add To Wishlist</div>
+             </div>
+
+        <div class="requirement">
+            <table class="tab">
+                <tr>
+                    <td class="he">Developer</td>
+                    <td class="des">COGNOSPHERE PTE. LTD.</td>
+                </tr>
+                <tr>
+                    <td class="he">Publisher</td>
+                    <td class="des">COGNOSPHERE PTE. LTD.</td>
+                </tr>
+                <tr>
+                    <td class="he">Release Date</td>
+                    <td class="des">06/09/21</td>
+                </tr>
+                <tr>
+                    <td class="he">Platform</td>
+                    <td class="des">Windows</td>
+                </tr>
+            </table>
+        </div>
+        <div class="showdesc" style="color:white"></div>
+       
+    </div>
+
+<script>
+    var he=document.querySelector(".decription");
+    var desc=document.querySelector(".showdesc");
+    var pr=document.querySelector(".price");
+    const decs="ELEMENTAL COMBAT SYSTEM <br> Harness the seven elements to unleash elemental reactions. Anemo, Electro, Hydro, Pyro, Cryo, Dendro, and Geo interact in all sorts of ways, and Vision wielders have the power to turn this to their advantage.<br>Will you vaporize Hydro with Pyro, electro-charge it with Electro, or freeze it with Cryo? Your mastery of the elements will give you the upper hand in battle and exploration.<br>BEAUTIFUL VISUALS    <br>Feast your eyes on the world around you, with a stunning art style, real-time rendering, and finely tuned character animations delivering you a truly immersive visual experience. Lighting and weather all change naturally over time, bringing every detail of this world to life.<br>SOOTHING SOUNDTRACK<br>Let the beautiful sounds of Teyvat draw you in as you explore the expansive world around you. Performed by the world's top orchestras such as London Philharmonic Orchestra and Shanghai Symphony Orchestra, the soundtrack changes seamlessly with the time and gameplay to match the mood.<br>BUILD YOUR DREAM TEAM<br>Team up with a diverse cast of characters in Teyvat, each with their own unique personalities, stories, and abilities. Discover your favorite party combinations and level up your characters to help you conquer even the most daunting of enemies and domains.";
+
+    pr.addEventListener("click",function(){
+        alert("Hurryup, discount sale is going on!!!")
+    });
+
+    he.addEventListener("click",function(){
+        desc.innerHTML=decs;
+    });
+
+</script>
+
+</body>
+
+</html>

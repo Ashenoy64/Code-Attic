@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Code</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div id="d1">
+        <p id="p1" style="color:black;">Some Text </p>
+    </div>
+    <br>
+    <div id="d2">
+        <h3>Subjects</h3>
+        <ul id="list">
+            <li>Web Technologies</li>
+            <li>Digital Design and Computer Organisation</li>
+            <li>Statistics for Data Science</li>
+            <li>Automata Formal languages and logic</li>
+            <li>Data structures and application</li>
+            <li>C++??</li>
+        </ul>
+        <button id="view">View</button>
+    </div>
+    <div id="data">
+        <h3>Get Authors Name:</h3>
+        <p id="res"></p>
+        <button id="get">GeT</button>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#d1").css("background","#d3ad7f");
+            $("#d1").css("color","black");
+            $("#d2").css("background","grey");
+            $("#d2").css("color","white");
+            $("#data").css("background","lightgreen");
+            $("#data").css("color","yellowgreen");
+            $("#p1").append("<ul><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li><li>Interdum posuere lorem ipsum dolor sit amet consectetur</li><li>Adipiscing tristique risus nec feugiat in fermentum</li></ul>").css("color","white");
+            $("#list").hide()    
+            $("#view").click(function(){
+                $("#list").toggle();
+            })
+            $("#get").click(function(){
+            $.ajax(
+                {
+                    url:"http://127.0.0.1:5500/TEMP/books.xml",
+                    dataType: 'xml',
+                    success: function(result){
+                    $(result).find("Author").each(function(){
+                        $("#res").append(this)    
+                        $("#res").append("<br>");
+                    })
+                }});
+            });
+        })
+    </script>
+    <style>
+        div {
+            margin: 10px;
+            margin-top: 20px;
+            border: 2px solid rgba(255,255,255);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        button{
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</body>
+</html>
