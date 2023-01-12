@@ -1,0 +1,191 @@
+/*module mul4(ans,aa,bb,clk,load,);
+
+input [3:0]aa,bb;
+input load,clk;
+output [7:0]ans;
+
+reg rst;
+
+always @(posedge clk)  
+    begin 
+        if(load)
+            rst=0; 
+        else
+            rst=1;
+    end
+
+multiply4bits mm(ans,aa,bb,cl,rst);
+
+endmodule 
+
+
+module multiply4bits(product,inp1,inp2,clock,reset);
+
+output [7:0]product;
+input [3:0]inp1;
+input [3:0]inp2;
+input clock;
+input reset;
+
+wire x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13,x14,x15,x16,x17;    
+
+assign product[0]= (inp1[0]&inp2[0]);             
+HA HA1(product[1],x1,(inp1[1]&inp2[0]),(inp1[0]&inp2[1]));
+FA FA1(x2,x3,(inp1[1]&inp2[1]),(inp1[0]&inp2[2]),x1);
+FA FA2(x4,x5,(inp1[1]&inp2[2]),(inp1[0]&inp2[3]),x3);
+HA HA2(x6,x7,(inp1[1]&inp2[3]),x5);
+HA HA3(product[2],x15,x2,(inp1[2]&inp2[0]));
+FA FA5(x14,x16,x4,(inp1[2]&inp2[1]),x15);
+FA FA4(x13,x17,x6,(inp1[2]&inp2[2]),x16);
+FA FA3(x9,x8,x7,(inp1[2]&inp2[3]),x17);
+HA HA4(product[3],x12,x14,(inp1[3]&inp2[0]));
+FA FA8(product[4],x11,x13,(inp1[3]&inp2[1]),x12);
+FA FA7(product[5],x10,x9,(inp1[3]&inp2[2]),x11);
+FA FA6(product[6],product[7],x8,(inp1[3]&inp2[3]),x10); 
+
+endmodule
+
+
+module HA(sout,cout,a,b);
+
+output sout,cout;
+input a,b;
+
+assign sout = a^b;
+assign cout = (a&b);
+
+endmodule
+
+
+module FA(sout,cout,a,b,cin);
+
+output sout,cout;
+input a,b,cin;
+
+assign sout =(a^b^cin);
+assign cout = ((a&b)|(a&cin)|(b&cin));
+
+endmodule*/
+
+module and2 (input wire i0, i1, output wire o);
+  assign o = i0 & i1;
+endmodule
+
+module xor2 (input wire i0, i1, output wire o);
+  assign o = i0 ^ i1;
+endmodule
+
+module or3 (input wire i0, i1, i2, output wire o);
+   wire t;
+   or2 or2_0 (i0, i1, t);
+   or2 or2_1 (i2, t, o);
+endmodule
+
+module xor3 (input wire i0, i1, i2, output wire o);
+   wire t;
+   xor2 xor2_0 (i0, i1, t);
+   xor2 xor2_1 (i2, t, o);
+endmodule
+
+
+module invert (input wire i, output wire o);
+   assign o = !i;
+endmodule
+
+
+module or2 (input wire i0, i1, output wire o);
+  assign o = i0 | i1;
+endmodule
+
+module mux2 (input wire i0, i1, j, output wire o);
+  assign o = (j==0)?i0:i1;
+endmodule
+
+module df (input wire clk, in, output wire out);
+  reg df_out;
+  always@(posedge clk) df_out <= in;
+  assign out = df_out;
+endmodule
+
+
+
+module dfr (input wire clk, reset, in, output wire out);
+  wire reset_, df_in;
+  invert invert_0 (reset, reset_);
+  and2 and2_0 (in, reset_, df_in);
+  df df_0 (clk, df_in, out);
+endmodule
+
+module dfrl (input wire clk, reset, load, in, output wire out);
+  wire _in;
+  mux2 mux2_0(out, in, load, _in);
+  dfr dfr_1(clk, reset, _in, out);
+endmodule
+module fa (input wire i0, i1, cin, output wire sum, cout);
+   wire t0, t1, t2;
+   xor3 _i0 (i0, i1, cin, sum);
+   and2 _i1 (i0, i1, t0);
+   and2 _i2 (i1, cin, t1);
+   and2 _i3 (cin, i0, t2);
+   or3 _i4 (t0, t1, t2, cout);
+endmodule
+
+module addsub (input wire addsub, i0, i1, cin, output wire sumdiff, cout);
+  wire t;
+  xor2 _i1 (i1, addsub, t);
+  fa _i0 (i0, t, cin, sumdiff, cout);
+endmodule
+
+
+
+module accumulator(input wire clk,reset,l,input wire[7:0] in,output wire [7:0] o);
+ dfrl d0(clk,reset,l,in[0],o[0]);
+ dfrl d1(clk,reset,l,in[1],o[1]);
+ dfrl d2(clk,reset,l,in[3],o[2]);
+ dfrl d3(clk,reset,l,in[3],o[3]);
+ dfrl d4(clk,reset,l,in[4],o[4]);
+ dfrl d5(clk,reset,l,in[5],o[5]);
+ dfrl d6(clk,reset,l,in[6],o[6]);
+ dfrl d7(clk,reset,l,in[7],o[7]);
+endmodule
+
+module adder(input wire [3:0] a,b,input wire cin ,output wire [3:0] c,output wire cout);
+    wire [2:0] out;
+    fa f0(a[0],b[0],cin,c[0],out[0]);
+    fa f1(a[1],b[1],out[0],c[1],out[1]);
+    fa f2(a[2],b[2],out[1],c[2],out[2]);
+    fa f3(a[3],b[3],out[2],c[3],cout);
+
+endmodule
+
+module multiplier(input wire clk,reset,cin,q ,input wire[3:0] multiplicand, output wire [7:0] o,output wire cout);
+    wire [7:0] data1,data2,data3;
+    integer load;
+    accumulator a0(clk,reset,1'b0,data1,data2);
+    always @* begin
+    if(q==1'b1)
+        adder a(multiplicand,data2[7],data2[6],data2[5],data2[4],1'b0,data3[7],data3[6],data3[5],data3[4],cout);
+    end
+    assign data3=data3>>1;
+    accumulator a1(clk,reset,1'b1,data1,o);  
+endmodule
+
+
+module control(input wire[3:0] multiplier,multiplicand,output wire [7:0] o); 
+    wire[7:0] data1,data2;
+    accumulator a0(1'b1,1'b1,1'b1,data1,data2);
+    wire c;
+    assign c=0;
+    generate
+    genvar i;
+    for(i=0;i<8;i=i+1) begin
+        if(i%2==0) begin
+            multiplier a(1'b1,1'b0,c,multiplier[0],multiplicand,o,c);
+            assign mutiplier=multiplier>>1;
+            end
+        else begin
+        multiplier b(1'b0,1'b0,c,multiplier[0],multiplicand,o,c);
+        end 
+    end
+    endgenerate
+endmodule

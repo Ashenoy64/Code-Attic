@@ -1,0 +1,73 @@
+$date
+	Sun Nov 27 00:43:11 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb $end
+$var wire 8 ! O [7:0] $end
+$var wire 1 " Finish $end
+$var reg 4 # A [3:0] $end
+$var reg 4 $ B [3:0] $end
+$var reg 1 % clk $end
+$var reg 1 & reset $end
+$var reg 1 ' start $end
+$scope module dut $end
+$var wire 4 ( A [3:0] $end
+$var wire 4 ) B [3:0] $end
+$var wire 1 % clk $end
+$var wire 1 & reset $end
+$var wire 1 ' start $end
+$var wire 1 " Finish $end
+$var reg 9 * ACC [8:0] $end
+$var reg 8 + O [7:0] $end
+$var reg 4 , State [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx ,
+bx +
+bx *
+bx )
+bx (
+x'
+1&
+0%
+bx $
+bx #
+x"
+bx !
+$end
+#10000
+b100 $
+b100 )
+b1010 #
+b1010 (
+0'
+#20000
+0&
+#30000
+1'
+#50000
+1%
+#60000
+0%
+#70000
+1%
+#80000
+0%
+#90000
+1%
+#100000
+0%
+#110000
+1%
+#120000
+0%
+#130000
+1%
