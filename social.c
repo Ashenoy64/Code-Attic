@@ -12,18 +12,6 @@
 #define string_copy strcpy
 #define giveitback return
 
-// Necessitatibus saepe incidunt nihil, quae ducimus unde earum ipsum expedita.
-// Architecto, quam, similique dolorem quod hic, rerum rem eius esse culpa corporis nam odit doloremque autem asperiores beatae? Hic quam maiores consectetur doloribus nemo maxime natus earum corrupti non porro!
-// Modi eos aspernatur, repellendus veniam, nostrum enim temporibus illo beatae, dolor a nulla totam. Culpa, quod magni repudiandae nobis est id dignissimos, numquam eaque voluptatem sunt adipisci ipsam aspernatur commodi!
-// Blanditiis eos illum repudiandae, animi dolorum sit, suscipit quia porro quis tenetur alias nam velit eaque vitae esse placeat iste perspiciatis sequi cum veniam! Molestiae nostrum ratione iusto amet itaque.
-// Aliquid dolorum nihil nostrum incidunt sed consequatur culpa expedita animi nulla aliquam sapiente magni iste assumenda alias, inventore et vitae consequuntur fugit itaque architecto enim tenetur nobis numquam? Tempore, eligendi.
-// Nisi, ipsa voluptas? Similique ducimus neque incidunt cupiditate at sapiente a consequatur commodi libero accusantium, provident cumque dolore iste quisquam blanditiis, architecto pariatur, laudantium corporis rerum error! Unde, voluptates mollitia.
-// Maxime quia sapiente voluptates cumque atque minus, esse cum ipsam, corrupti repellendus quam. Itaque, repellat inventore! Earum pariatur voluptatem iste nulla et, ratione quis facere? Cumque deleniti illum tempore quia.
-// Consequuntur temporibus quas, quos in delectus, ipsa voluptas, perferendis molestias nihil modi ipsum non distinctio? Architecto ipsa asperiores dolor itaque accusantium perspiciatis, libero officiis, voluptas voluptatum repellendus quasi dolores! Corporis!
-// Nulla assumenda, officiis quasi accusamus velit vel, enim dolor repellat dolorem corrupti itaque eaque, unde reprehenderit nam optio maxime consequuntur inventore ad dolores commodi minima quidem nemo porro dolore! Odio.
-// Officiis, consectetur tempora dicta suscipit quo sequi numquam eum, accusantium harum sapiente laboriosam odit aspernatur beatae velit explicabo inventore vero voluptatibus et adipisci
-
-//End
 typedef strno 
 {
     integer id; //ID of user
