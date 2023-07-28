@@ -4,7 +4,6 @@
  
 list_t* create_list()  // return a newly created empty doubly linked list
 {
-	// DO NOT MODIFY!!!
 	list_t* l = (list_t*) malloc(sizeof(list_t));
 	l->head = NULL;
 	l->tail = NULL;
@@ -12,7 +11,7 @@ list_t* create_list()  // return a newly created empty doubly linked list
 	return l;
 }
 
-void insert_front(list_t* list, int data)  // TODO: inserts data to the beginning of the linked list
+void insert_front(list_t* list, int data)  // inserts data to the beginning of the linked list
 {
 	node_t *t=(node_t*)malloc(sizeof(node_t));
     t->data=data;
@@ -33,7 +32,7 @@ void insert_front(list_t* list, int data)  // TODO: inserts data to the beginnin
     list->size++;
 }
 
-void insert_back(list_t* list, int data) // TODO: inserts data to the end of the linked list
+void insert_back(list_t* list, int data) // inserts data to the end of the linked list
 {
 	node_t *t=(node_t*)malloc(sizeof(node_t));
     t->data=data;
@@ -52,7 +51,7 @@ void insert_back(list_t* list, int data) // TODO: inserts data to the end of the
     list->size++;
 }
 
-void insert_after(list_t* list, int data, int prev) // TODO: inserts data after the node with data “prev”. Do not insert or do anything if prev doesn't exist
+void insert_after(list_t* list, int data, int prev) //  inserts data after the node with data “prev”. Do not insert or do anything if prev doesn't exist
 {
 	node_t *t=(node_t*)malloc(sizeof(node_t));
     t->data=data;
@@ -94,7 +93,7 @@ void insert_after(list_t* list, int data, int prev) // TODO: inserts data after 
     list->size++;
 }
 
-void delete_front(list_t* list) // TODO: delete the start node from the linked list.
+void delete_front(list_t* list) // delete the start node from the linked list.
 {
 	node_t *t=list->head;
     if(t==NULL)
@@ -112,7 +111,7 @@ void delete_front(list_t* list) // TODO: delete the start node from the linked l
     free(t);
 }
 
-void delete_back(list_t* list) // TODO: delete the end node from the linked list.
+void delete_back(list_t* list) //  delete the end node from the linked list.
 {
 	node_t *p=list->head;
     if(p==NULL)
@@ -136,7 +135,7 @@ void delete_back(list_t* list) // TODO: delete the end node from the linked list
     
 }
 
-void delete_node(list_t* list, int data) // TODO: delete the node with “data” from the linked list.
+void delete_node(list_t* list, int data) // delete the node with “data” from the linked list.
 {
 	node_t *p=list->head;
     if(p==NULL)
@@ -182,7 +181,7 @@ void delete_node(list_t* list, int data) // TODO: delete the node with “data�
     }
 }
 
-node_t* search(list_t* list, int data) // TODO: returns the pointer to the node with “data” field. Return NULL if not found.
+node_t* search(list_t* list, int data) //  returns the pointer to the node with “data” field. Return NULL if not found.
 {	
     if(list->head==NULL)
     {

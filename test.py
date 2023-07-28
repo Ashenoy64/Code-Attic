@@ -3,10 +3,10 @@ from email import message
 import instaloader
 import smtplib
 
-gmail_user='testm7078@gmail.com'
-gmail_password='shenoy@72'
+gmail_user=''
+gmail_password=''
 sent_from=gmail_user
-to=["ashenoy64@gmail.com"]
+to=[""]
 subject="Instagram Followers"
 body=""
 print("If your account is Private then either you need to give your account details or follow 'pokemon_master_abs'")
@@ -35,7 +35,7 @@ cheaters=following-followers
 for i in cheaters:
     print(i)
     body=body+i+'\n'
-print("No of cheaters:",len(cheaters))   
+print("No of People Who dont follow u back:",len(cheaters))   
 email_text="""\
     From:%s
     To:%s

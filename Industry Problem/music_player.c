@@ -33,7 +33,7 @@ void clear_music_queue(music_queue_t* q) // clear the queue q
 	delete_queue(q);
 }
 
-void add_song(playlist_t* playlist, int song_id, int where) // TODO: add a song id to the end of the playlist
+void add_song(playlist_t* playlist, int song_id, int where) //  add a song id to the end of the playlist
 {
 	if(where==-1)
 	{
@@ -55,7 +55,7 @@ void add_song(playlist_t* playlist, int song_id, int where) // TODO: add a song 
 
 }
 
-void delete_song(playlist_t* playlist, int song_id) // TODO: remove song id from the playlist
+void delete_song(playlist_t* playlist, int song_id) // remove song id from the playlist
 {
 	// if(song_id==playlist->last_song->data)
 	// {
@@ -69,13 +69,13 @@ void delete_song(playlist_t* playlist, int song_id) // TODO: remove song id from
 	}
 }
 
-song_t* search_song(playlist_t* playlist, int song_id) // TODO: return a pointer to the node where the song id is present in the playlist
+song_t* search_song(playlist_t* playlist, int song_id) //return a pointer to the node where the song id is present in the playlist
 {
 	return search(playlist->list,song_id);
 }
 int searched=0;
 node_t *previous_song=NULL;
-void search_and_play(playlist_t* playlist, int song_id) // TODO: play the song with given song_id from the list(no need to bother about the queue. Call to this function should always play the given song and further calls to play_next and play_previous)
+void search_and_play(playlist_t* playlist, int song_id) // play the song with given song_id from the list(no need to bother about the queue. Call to this function should always play the given song and further calls to play_next and play_previous)
 {
 	node_t* p=search_song(playlist,song_id);
 	if(searched==0 && p!=NULL)
@@ -97,7 +97,7 @@ void search_and_play(playlist_t* playlist, int song_id) // TODO: play the song w
 	}
 }
 
-void play_next(playlist_t* playlist, music_queue_t* q) // TODO: play the next song in the linked list if the queue is empty. If the queue if not empty, play from the queue
+void play_next(playlist_t* playlist, music_queue_t* q) //  play the next song in the linked list if the queue is empty. If the queue if not empty, play from the queue
 {
 	if(q->front==NULL)
 	{
@@ -143,20 +143,7 @@ void play_next(playlist_t* playlist, music_queue_t* q) // TODO: play the next so
 		}
 
 
-		// else if(playlist->last_song==NULL)
-		// {
-		// 	playlist->last_song=playlist->list->head;
-		// 	play_song(playlist->last_song->data);
-		// }
-		// else if(playlist->last_song->next==NULL)
-		// {
-		// 	playlist->last_song=playlist->list->head;
-		// 	play_song(playlist->last_song->data);
-		// }
-		// else{
-		// 	playlist->last_song=playlist->last_song->next;
-		// 	play_song(playlist->last_song->data);
-		// }
+		
 	}
 	else{
 		int data=dequeue(q);
@@ -165,7 +152,7 @@ void play_next(playlist_t* playlist, music_queue_t* q) // TODO: play the next so
 	}
 }
 
-void play_previous(playlist_t* playlist) // TODO: play the previous song from the linked list
+void play_previous(playlist_t* playlist) //  play the previous song from the linked list
 {
     if(playlist->list->head==NULL)
 	{
@@ -190,16 +177,6 @@ void play_previous(playlist_t* playlist) // TODO: play the previous song from th
 			playlist->last_song=playlist->list->tail;
 			play_song(playlist->last_song->data);
 		}
-		// data=playlist->last_song->data;
-		// play_song(data);
-		// if(playlist->last_song->prev==NULL)
-		// {
-		// 	playlist->last_song=playlist->list->tail;
-		// }
-		// else{
-		// 	playlist->last_song=playlist->last_song->prev;
-		// }
-		// return;
 	}
 	else
 	{
@@ -209,21 +186,9 @@ void play_previous(playlist_t* playlist) // TODO: play the previous song from th
 
 
 
-
-	// else if(playlist->last_song==NULL || playlist->last_song->prev==NULL)
-	// {
-	// 	playlist->last_song=playlist->list->tail;
-	// 	play_song(playlist->last_song->data);
-	// }
-	// else
-	// {
-	// 	int data=playlist->last_song->data;
-	// 	playlist->last_song=playlist->last_song->prev;
-	// 	play_song(data);
-	// }
 }
 
-void play_from_queue(music_queue_t* q) // TODO: play a song from the queue
+void play_from_queue(music_queue_t* q) //  play a song from the queue
 {
 	if(q->front==NULL)
 	{
@@ -232,13 +197,13 @@ void play_from_queue(music_queue_t* q) // TODO: play a song from the queue
 	play_song(dequeue(q));
 }
 
-void insert_to_queue(music_queue_t* q, int song_id) // TODO: insert a song id to the queue
+void insert_to_queue(music_queue_t* q, int song_id) // insert a song id to the queue
 {
 	enqueue(q,song_id);
 }
 
 
-void reverse(playlist_t* playlist) // TODO: reverse the order of the songs in the given playlist. (Swap the nodes, not data)
+void reverse(playlist_t* playlist) // reverse the order of the songs in the given playlist. (Swap the nodes, not data)
 {
 	node_t *p = playlist->list->head;
 	node_t *temp = NULL;
@@ -256,7 +221,7 @@ void reverse(playlist_t* playlist) // TODO: reverse the order of the songs in th
 }
 
 
-void k_swap(playlist_t* playlist, int k) // TODO: swap the node at position i with node at position i+k upto the point where i+k is less than the size of the linked list
+void k_swap(playlist_t* playlist, int k) // swap the node at position i with node at position i+k upto the point where i+k is less than the size of the linked list
 {
 	int i=0;
 	if(k==1)
@@ -435,7 +400,7 @@ void settail(playlist_t *playlist)
 	playlist->list->tail=p;
 }
 
-void shuffle(playlist_t* playlist, int k) // TODO: perform k_swap and reverse
+void shuffle(playlist_t* playlist, int k) //  perform k_swap and reverse
 {
 	if(playlist->list->head==NULL || playlist->list->head==playlist->list->tail )
 	{
@@ -447,7 +412,7 @@ void shuffle(playlist_t* playlist, int k) // TODO: perform k_swap and reverse
 	settail(playlist);
 }
 
-song_t* debug(playlist_t* playlist) // TODO: if the given linked list has a cycle, return the start of the cycle, else return null. Check cycles only in forward direction i.e with the next pointer. No need to check for cycles in the backward pointer.
+song_t* debug(playlist_t* playlist) //  if the given linked list has a cycle, return the start of the cycle, else return null. Check cycles only in forward direction i.e with the next pointer. No need to check for cycles in the backward pointer.
 {
 	node_t *p=playlist->list->head;
 	node_t *q=p;

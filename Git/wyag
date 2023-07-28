@@ -1,0 +1,4 @@
+#!c:\Users\Meowmaster\AppData\Local\Programs\Python\Python310\python.exe
+
+import libwyag
+libwyag.main()

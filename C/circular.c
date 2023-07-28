@@ -70,7 +70,3 @@ void display()
     }
 }
 
-int main()
-{
-    
-}
