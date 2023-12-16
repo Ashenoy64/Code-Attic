@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Login</title>
+<style>
+    @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      
+      .rotating {
+        animation: rotate 5s linear infinite; }
+
+        .glow {
+            box-shadow: 0px 0px 10px 2px white; 
+            animation: glowness 5s linear infinite;
+        }
+
+        @keyframes glowNess {
+            0% {
+                box-shadow: 0px 0px 10px 2px white; 
+            }
+            100% {
+                box-shadow: 0px 0px 20px 2px white; 
+            }
+          }
+</style>
+
+{% endblock %}
+
+
+{% block body %}
+<div class="h-screen flex flex-col justify-center items-center">
+    <form action="/login" method="post" class="w-96 h-96 m-auto flex flex-col gap-2 border-2 border-white justify-center p-4 rounded-xl rotating glow">
+        <div class="text-center font-bold text-xl">
+            Login
+        </div>
+        <input type="text" placeholder="Email" class="p-2 text-black rounded" name="email" />
+        <input type="password" placeholder="Password" class="p-2 text-black rounded" name="password" />
+        <button type="submit" class="w-1/2 mx-auto text-center p-2 bg-green-400 rounded my-4">
+            Login
+        </button>
+    </form>
+</div>
+
+{% endblock %}
